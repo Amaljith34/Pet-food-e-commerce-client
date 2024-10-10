@@ -42,7 +42,7 @@ export default function AdminUserCart() {
                   <thead className="ltr:text-left rtl:text-right">
                     <tr>
                       <th className="px-4 py-2 font-medium text-gray-900">Product Title</th>
-                      <th className="px-4 py-2 font-medium text-gray-900">Product Color</th>
+                      <th className="px-4 py-2 font-medium text-gray-900">Product Discription</th>
                       <th className="px-4 py-2 font-medium text-gray-900">Product Quantity</th>
                       <th className="px-4 py-2 font-medium text-gray-900">Product Price</th>
                       <th className="px-4 py-2 font-medium text-gray-900">Total</th>
@@ -51,8 +51,8 @@ export default function AdminUserCart() {
                   <tbody className="divide-y divide-gray-200">
                     {cart.map((product) => (
                       <tr key={product._id} className="odd:bg-gray-50">
-                        <td className="px-4 py-2 font-medium text-gray-900">{product.productId.title}</td>
-                        <td className="px-4 py-2 text-gray-700">{product.productId.color}</td>
+                        <td className="px-4 py-2 font-medium text-gray-900">{product.productId.product_name}</td>
+                        <td className="px-4 py-2 text-gray-700">{product.productId.discription}</td>
                         <td className="px-4 py-2 text-gray-700">{product.quantity}</td>
                         <td className="px-4 py-2 text-gray-700">{product.productId.price}</td>
                         <td className="px-4 py-2 text-gray-700">

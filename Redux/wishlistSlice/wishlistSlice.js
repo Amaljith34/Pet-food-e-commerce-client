@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../utils/axios";
 import toast from "react-hot-toast";
+import api from "../../utils/axios";
 
 export const settingWishList = createAsyncThunk(
   "wishlist/settingWishList",
@@ -8,7 +8,9 @@ export const settingWishList = createAsyncThunk(
     try {
       const id = localStorage.getItem("id");
       const response = await api.get(`/user/wishlist/${id}`);
-      return response.data?.data;
+      console.log(response);
+      
+      return response.data.data;
     } catch (error) {
       return rejectWithValue("Failed to fetch wishlist");
     }

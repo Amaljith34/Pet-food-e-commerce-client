@@ -231,79 +231,54 @@ const LoginPage = () => {
     { setSubmitting, setErrors, resetForm }
   ) => {
     try {
-      await api
-        .post("/user/login", values)
-        .then((res) => {
-          // console.log(res)
-          if (res.status >= 200 && res.status < 300) {
-            setShowPopup(true);
-            localStorage.setItem("id", res.data.UserId);
-            localStorage.setItem("token", res.data.token);
-            resetForm();
-            dispatch(login({ id: res.data.userId }));
-            console.log(res.data.role)
-            setTimeout(() => {
-              setShowPopup(false);
-              if (res.data.role == "admin") {
-                navigate("/admin");
-              } else {
-                navigate("/");
-              }
-            }, 1500);
+      const res = await api.post("/user/login", values);
+      console.log(res);
+      
+      // If login is blocked
+        if (res.status >= 200 && res.status < 300) {
+        setShowPopup(true);
+        const { userId, token, role } = res.data;
+        console.log(res.data.role);
+        
+        // Store in localStorage
+        localStorage.setItem("id", userId);
+        localStorage.setItem("token", token);
+        
+        resetForm();
+        dispatch(login({ id: userId }));
+  
+        // Navigate based on role
+        setTimeout(() => {
+          setShowPopup(false);
+          if (res.data.userId == "66f6752c3913c2090f844734") {
+            navigate("/admin");
+          } else {
+            navigate("/");
           }
-        })
-        .catch((error) => {
-          if (error.response.status === 400) {
-            toast.error("No user found. Please create an account ");
-            navigate("/registration");
-            resetForm();
-          } else if (error.response.status === 401) {
-            toast.error("Incorrect password/username");
-          }
-        });
-
-      // const adminLogin = user.find((user) => user.role === "admin");
-      // console.log(adminLogin);
-
-      // const existData = user.find(
-      //   (user) =>
-      //     user.email === values.email && user.password === values.password
-      // );
-      // console.log(existData,'exist')
-      // const incorrectData = NewData.find(
-      //   (user) =>
-      //     user.email === values.email && user.password !== values.password
-      // );
-      // console.log(incorrectData,'incoreect')
-
-      //     if (existData) {
-      //       console.log("Login Successfully");
-      //       setShowPopup(true);
-      //       setTimeout(() => {
-      //         setShowPopup(false);
-      //         localStorage.setItem("id", existData.id);
-      //         resetForm();
-      //         if (email === "admin@gmail.com") {
-      //           navigate("/admin");
-      //         } else {
-      //           navigate("/");
-      //         }
-      //         dispatch(login());
-      //       }, 1500);
-      //     } else if (incorrectData) {
-      //       toast.error("username/password is incorrect");
-      //     } else {
-      //       resetForm();
-      //       toast.error("Please Create an account");
-      //       navigate("/registration");
-      //     }
+        }, 1500);
+      }
     } catch (error) {
-      toast.error("Something went wrong");
-      setErrors({ submit: error.message });
-    } finally {
-      setSubmitting(false);
-    }
+      if (error.response) {
+        const status = error.response.status;
+        if(status===403){
+          toast.error("You are blocked");
+          
+        }
+         else if (status === 400) {
+          toast.error("No user found. Please create an account");
+          navigate("/registration");
+        } else if (status === 401) {
+          toast.error("Incorrect password/username");
+        } else {
+          toast.error("Something went wrong");
+        }
+      } else {
+        toast.error("Network error or server is not responding");
+      }
+      
+    } 
   };
+  
 
   return (
     <>

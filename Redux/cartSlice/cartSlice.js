@@ -26,7 +26,7 @@ export const settingCart = createAsyncThunk(
 
 export const addToCartAsync = createAsyncThunk(
   "cartSlice/addToCartAsync",
-  async (product, { getState }) => {
+  async (products, { getState }) => {
     try {
       // const state = getState();
       const id = localStorage.getItem("id");
@@ -52,8 +52,8 @@ export const addToCartAsync = createAsyncThunk(
       // console.log(userCart);
 
       await api.post(`/user/cart/${id}`, {
-        productId: product._id,
-        quantity: product.quantity,
+        productId: products._id,
+        quantity: products.quantity,
       });
       // console.log(state.cartSlice.cart.push(product))
 
@@ -141,6 +141,7 @@ export const quantityDecrementAsync = createAsyncThunk(
       await api.post(`/user/cart/${id}`, {
         productId: product.productId._id,
         quantity: product.quantity,
+        
         action: "decrement",
       });
       const res = await api.get(`/user/cart/${id}`);

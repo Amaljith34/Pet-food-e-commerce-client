@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 import * as yup from "yup";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../../../../utils/axios";
 import { fetchProducts, updateProduct } from "../../../../Redux/productSlice/productSlice";
+import api from "../../../../utils/axios";
 
 export default function AdminProductUpdate() {
   const dispatch = useDispatch();
@@ -15,13 +15,15 @@ export default function AdminProductUpdate() {
   const product = products?.data?.find((item) => item._id === idNum);
   const navigate = useNavigate();
 
+
   const validationSchema = yup.object({
-    title: yup.string().required("This Field is Required"),
+    product_name: yup.string().required("This Field is Required"),
     imageSrc: yup.string().url().required("This Field is Required"),
     imageAlt: yup.string().required("This Field is Required"),
     price: yup.number().required("This Field is Required"),
-    color: yup.string().required("This Field is Required"),
+    discription: yup.string().required("This Field is Required"),
     category: yup.string().required("This Field is Required"),
+    isShow:yup.string().required("This Field is Required"),
   });
 
   const handleSubmit = async (values, { setSubmitting, setErrors }) => {
@@ -29,7 +31,7 @@ export default function AdminProductUpdate() {
       const updated = Object.keys(values).some((key) => values[key] !== product[key]);
 
       if (updated) {
-        await api.patch(`/admin/${product._id}/product`, values);
+        await api.patch(`/admin/product/${product._id}`, values);
         dispatch(updateProduct(values));
         dispatch(fetchProducts());
         toast.success(`Updated product successfully`);
@@ -58,7 +60,7 @@ export default function AdminProductUpdate() {
             className="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="currentColor"
+            stroke="currentdiscription"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -69,12 +71,13 @@ export default function AdminProductUpdate() {
 
       <Formik
         initialValues={{
-          title: product.title || "",
+          product_name: product.product_name || "",
           imageSrc: product.imageSrc || "",
           imageAlt: product.imageAlt || "",
           price: product.price || "",
-          color: product.color || "",
+          discription: product.discription || "",
           category: product.category || "",
+          isShow:product.isShow|| "false"
         }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
@@ -82,16 +85,16 @@ export default function AdminProductUpdate() {
         {({ isSubmitting }) => (
           <Form className="space-y-4">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-                Product Title
+              <label htmlFor="product_name" className="block text-sm font-medium text-gray-700">
+                Product product_name
               </label>
-              <Field name="title" type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-              <ErrorMessage name="title" component="div" className="text-red-500 text-sm" />
+              <Field name="product_name" type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
+              <ErrorMessage name="product_name" component="div" className="text-red-500 text-sm" />
             </div>
 
             <div>
               <label htmlFor="imageSrc" className="block text-sm font-medium text-gray-700">
-                Image Source
+                ImageSrc
               </label>
               <Field name="imageSrc" type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
               <ErrorMessage name="imageSrc" component="div" className="text-red-500 text-sm" />
@@ -99,7 +102,7 @@ export default function AdminProductUpdate() {
 
             <div>
               <label htmlFor="imageAlt" className="block text-sm font-medium text-gray-700">
-                Image Alt Text
+                ImageAlt 
               </label>
               <Field name="imageAlt" type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
               <ErrorMessage name="imageAlt" component="div" className="text-red-500 text-sm" />
@@ -114,11 +117,11 @@ export default function AdminProductUpdate() {
             </div>
 
             <div>
-              <label htmlFor="color" className="block text-sm font-medium text-gray-700">
-                Color
+              <label htmlFor="discription" className="block text-sm font-medium text-gray-700">
+                Discription
               </label>
-              <Field name="color" type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
-              <ErrorMessage name="color" component="div" className="text-red-500 text-sm" />
+              <Field name="discription" type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
+              <ErrorMessage name="discription" component="div" className="text-red-500 text-sm" />
             </div>
 
             <div>
@@ -127,6 +130,13 @@ export default function AdminProductUpdate() {
               </label>
               <Field name="category" type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
               <ErrorMessage name="category" component="div" className="text-red-500 text-sm" />
+            </div>
+            <div>
+              <label htmlFor="isShow" className="block text-sm font-medium text-gray-700">
+                isShow
+              </label>
+              <Field name="isShow" type="text" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
+              <ErrorMessage name="isShow" component="div" className="text-red-500 text-sm" />
             </div>
 
             <button

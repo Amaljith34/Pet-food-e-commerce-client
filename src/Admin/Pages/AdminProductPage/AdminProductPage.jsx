@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import SearchBar from "../../../G-Components/SearchBar/SearchBar";
+
 import { useDispatch, useSelector } from "react-redux";
-import {
-  categorize,
-  deleteProduct,
-} from "../../../../Redux/productSlice/productSlice";
+import { categorize, deleteProduct } from "../../../../Redux/productSlice/productSlice";
 import api from "../../../../utils/axios";
+import SearchBar from "../../../G-Components/SearchBar/SearchBar";
 
 export const AdminProductPage = () => {
   const dispatch = useDispatch();
@@ -21,7 +19,7 @@ export const AdminProductPage = () => {
   };
 
   const handleProductRemove = (product) => {
-    api.delete(`/admin/${product._id}/product`).then(() => {
+    api.delete(`/admin/product//${product._id}`).then(() => {
       dispatch(deleteProduct(product));
       toast.success(`Product '${product.title}' Removed`);
     });

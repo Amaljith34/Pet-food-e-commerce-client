@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
-export default function AdminProtect({ element }) {
+export default function UserProtect({ element }) {
   const { users } = useSelector((state) => state.usersSlice);
   const id = localStorage.getItem("id");
   const [isAuthorized, setIsAuthorized] = useState(null);
@@ -13,11 +13,11 @@ export default function AdminProtect({ element }) {
   useEffect(() => {
     if (users?.data) {
       const user = users?.data?.find((user) => user._id === id);
-      if (user?.role === "admin") {
+      if (user?.user === "admin") {
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
-        toast.error("Admin only Access");
+        toast.error("User only Access");
       }
     }
   }, [users, id]);
@@ -26,7 +26,6 @@ export default function AdminProtect({ element }) {
       <div className="flex flex-col items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid border-opacity-50"></div>
         <p className="mt-4 text-blue-500 font-semibold">Loading...</p>
-        
       </div>
     );
   }
@@ -35,5 +34,5 @@ export default function AdminProtect({ element }) {
     return element;
   }
 
-  return <Navigate to="/" />;
+  return <Navigate to="/admin" />;
 }

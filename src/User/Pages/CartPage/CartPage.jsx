@@ -89,7 +89,7 @@ export default function CartPage() {
       }
     }
   };
-  {cart?.map((product) =>{console.log(product._id);
+  {cart?.map((product) =>{console.log(product.productId);
   })}
 
   return (
@@ -120,7 +120,7 @@ export default function CartPage() {
                   <div className="ml-4 flex-1">
                     <h3 className="font-medium text-gray-900">
                       <Link to={product.productId.href}>
-                        {product.productId.title}
+                        {product.productId.product_name}
                       </Link>
                     </h3>
                     <p className="text-sm text-gray-500">{product.productId.color}</p>

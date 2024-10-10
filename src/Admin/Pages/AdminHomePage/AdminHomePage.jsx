@@ -30,7 +30,7 @@ export default function AdminHomePage() {
   }, []);
 
   return (
-    <div className="md:ms-44 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 px-4 md:px-6 lg:px-8">
+    <div className="md:ms-44 grid grid-cols-1 md:grid-cols-2  gap-6 mb-6 px-4 md:px-6 lg:px-8 lg:align-middle lg:mt-28 ">
       <Link
         to="/admin/usersList"
         className="block bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg p-6 shadow-lg transform transition hover:scale-105 duration-300"
@@ -72,15 +72,7 @@ export default function AdminHomePage() {
         </div>
       </Link>
 
-      <div className="bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-lg p-6 shadow-lg transform transition hover:scale-105 duration-300">
-        <div className="flex justify-between items-center mb-4">
-          <div>
-            <div className="text-4xl font-bold">{totalSales}</div>
-            <div className="text-lg font-medium">Total Sales</div>
-          </div>
-          <FaDollarSign className="text-4xl opacity-75" />
-        </div>
-      </div>
+      
 
       <div className="bg-gradient-to-r from-red-400 to-pink-500 text-white rounded-lg p-6 shadow-lg transform transition hover:scale-105 duration-300">
         <div className="flex justify-between items-center mb-4">

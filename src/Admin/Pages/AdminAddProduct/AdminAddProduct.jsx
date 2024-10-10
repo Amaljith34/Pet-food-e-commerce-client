@@ -4,18 +4,18 @@ import React from "react";
 // import { toast } from "react-toastify";
 import toast from "react-hot-toast";
 import * as yup from "yup";
-import api from "../../../../utils/axios";
 import { useDispatch } from "react-redux";
+import api from "../../../../utils/axios";
 import { addProduct } from "../../../../Redux/productSlice/productSlice";
 
 const AdminAddProduct = () => {
   const dispatch = useDispatch();
   const validationSchema = yup.object({
-    title: yup.string().required("This Field is Required"),
+    product_name: yup.string().required("This Field is Required"),
     imageSrc: yup.string().url().required("This Field is Required"),
     imageAlt: yup.string().required("This Field is Required"),
     price: yup.number().required("This Field is Required"),
-    color: yup.string().required("This Field is Required"),
+    discription: yup.string().required("This Field is Required"),
     category: yup.string().required("This Field is Required"),
   });
 
@@ -25,8 +25,10 @@ const AdminAddProduct = () => {
   ) => {
     try {
       const response = await api.post("/admin/product", values);
+      console.log(response);
+      
       dispatch(addProduct(response.data.data));
-      toast.success(`Added "${values.title}" succesfully`);
+      toast.success(`Added "${values.product_name}" succesfully`);
       resetForm();
       // console.log(values);
     } catch (error) {
@@ -47,11 +49,11 @@ const AdminAddProduct = () => {
 
           <Formik
             initialValues={{
-              title: "",
+              product_name: "",
               imageSrc: "",
               imageAlt: "",
               price: "",
-              color: "",
+              discription: "",
               category: "",
               quantity: 1,
             }}
@@ -73,14 +75,14 @@ const AdminAddProduct = () => {
                   </label>
                   <div className="relative">
                     <Field
-                      name="title"
+                      name="product_name"
                       type="text"
                       className="w-full rounded-md mb-2 border-gray-200 p-3 pe-12 text-sm shadow-sm border"
-                      placeholder="Enter Title"
+                      placeholder="Enter product name "
                     />
                     <ErrorMessage
                       component="div"
-                      name="title"
+                      name="product_name"
                       className="text-red-500 text-sm"
                     />
                   </div>
@@ -153,18 +155,18 @@ const AdminAddProduct = () => {
                     htmlFor=""
                     className="block ps-1.5 pb-1 text-sm text-start font-medium leading-6 text-gray-400"
                   >
-                    Color
+                    Category
                   </label>
                   <div className="relative">
                     <Field
-                      name="color"
+                      name="category"
                       type="text"
                       className="w-full rounded-md mb-2 border-gray-200 p-3 pe-12 text-sm shadow-sm border"
-                      placeholder="Enter Color"
+                      placeholder="Enter category"
                     />
                     <ErrorMessage
                       component="div"
-                      name="color"
+                      name="category"
                       className="text-red-500 text-sm"
                     />
                   </div>
@@ -175,23 +177,23 @@ const AdminAddProduct = () => {
                       htmlFor=""
                       className="block ps-1.5 pb-1 text-sm text-start font-medium leading-6 text-gray-400"
                     >
-                      Category
+                      Discription
                     </label>
                     <Field
-                      name="category"
+                      name="discription"
                       type="text"
                       className="w-full rounded-md mb-4 border-gray-200 p-3 pe-12 text-sm shadow-sm border"
-                      placeholder="Enter Category"
+                      placeholder="Enter discription"
                     />
                     <ErrorMessage
                       component="div"
-                      name="category"
+                      name="discription"
                       className="text-red-500 text-sm"
                     />
                   </div>
                 </div>
                 <button
-                  onClick={handleSubmit}
+                  
                   type="submit"
                   className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
                   disabled={isSubmitting}

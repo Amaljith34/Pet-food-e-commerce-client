@@ -12,7 +12,6 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ContactPage from "./User/Pages/ContactPage/ContactPage";
 import ProtectedRoute from "./User/Componet/protectedRoute/protectedRoute";
 // import { ToastContainer } from "react-toastify";
-import { AdminSidebar } from "./Admin/Pages/AdminSideBar/AdminSideBar";
 import UsersLists from "./Admin/Pages/UsersLists/UsersLists";
 import { AdminProductPage } from "./Admin/Pages/AdminProductPage/AdminProductPage";
 import AdminAddProduct from "./Admin/Pages/AdminAddProduct/AdminAddProduct";
@@ -31,6 +30,8 @@ import { login } from "../Redux/logSlice/logSlice";
 import { Toaster } from "react-hot-toast";
 import { settingWishList } from "../Redux/wishlistSlice/wishlistSlice";
 import Navbar from './User/Pages/Navbar/Navbar';
+import { AdminNavbar } from './Admin/Pages/Adminnavbar/Adminnavbar';
+import UserProtect from './User/Componet/userProtect/userProduct';
 
 function App() {
   const id = localStorage.getItem("id");
@@ -79,7 +80,7 @@ function App() {
         <Routes>
           {/* Users Routes */}
 
-          <Route path="/" element={<Navbar />}>
+          <Route path="/" element={<UserProtect element={<Navbar />}/>}>
             <Route index element={<HomePage />} />
             <Route
               path="products"
@@ -115,7 +116,7 @@ function App() {
             path="/admin"
             element={
               <AdminProtect
-                element={<ProtectedRoute element={<AdminSidebar />} />}
+                element={<ProtectedRoute element={<AdminNavbar />} />}
               />
             }
           >
@@ -167,6 +168,7 @@ function App() {
                 />
               }
             />
+            
             <Route
               path="/admin/userslist/user/:id/orders"
               element={

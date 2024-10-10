@@ -20,8 +20,8 @@ const ContactPage = () => {
   });
 
   const handleSubmit = (values, { resetForm, setErrors }) => {
-    const Service_ID = "service_b7da4vk";
-    const Template_ID = "template_9k45awi";
+    const Service_ID = "service_189r1bh";
+    const Template_ID = "template_6h39z59";
     const Public_Key = "KbEoyyGB8xIbYh60w";
 
     const templateParams = {
@@ -31,7 +31,7 @@ const ContactPage = () => {
     };
 
     emailjs
-      .send(Service_ID, Template_ID, templateParams, Public_Key)
+      .send(Service_ID, Template_ID, templateParams)
       .then((res) => {
         toast.success("Form submitted succesfully");
         resetForm();
@@ -45,17 +45,17 @@ const ContactPage = () => {
       <div className="space-y-6">
         <div>
           <h3 className="text-2xl font-semibold">Head Office</h3>
-          <p className="text-gray-700 mt-1">Shop No. 46</p>
+          <p className="text-gray-700 mt-1">Shop No. 34</p>
           <p className="text-gray-700">S.M Street, Calicut</p>
-          <p className="text-gray-700">Email: contact@kazpix.com</p>
-          <p className="text-gray-700">Phone: (+91) 8606 9293 24</p>
+          <p className="text-gray-700">Email: contact@headsupfortails.com</p>
+          <p className="text-gray-700">Phone: (+91) 8590166397</p>
         </div>
         <div>
           <h3 className="text-2xl font-semibold">Branch Office 1</h3>
-          <p className="text-gray-700 mt-1">U-Square Koyilandi</p>
-          <p className="text-gray-700">Kannur Road, Koyilandi</p>
-          <p className="text-gray-700">Email: contact@kazpix.com</p>
-          <p className="text-gray-700">Phone: (+91) 8606 9293 24</p>
+          <p className="text-gray-700 mt-1">U-Square chelari</p>
+          <p className="text-gray-700">Calicut Road, chelari</p>
+          <p className="text-gray-700">Email: contact@headsupfortails.com</p>
+          <p className="text-gray-700">Phone: (+91) 9876543210</p>
         </div>
         <Formik
           onSubmit={handleSubmit}
