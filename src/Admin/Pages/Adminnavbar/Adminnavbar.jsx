@@ -17,8 +17,8 @@ export const AdminNavbar = () => {
       <header className="fixed w-full z-10 bg-white shadow">
         <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 sm:px-8" aria-label="Global">
           <div className="flex items-center">
-            <img src={logo} alt="Logo" className="w-12 me-5" />
-            <img src={fontLogo} alt="Font Logo" className="hidden md:block w-32" />
+            <img src="https://cdn.shopify.com/s/files/1/0086/0795/7054/files/logo_1.svg?v=1709198253" alt="Logo" className="w-12 me-5" />
+            <img src="https://cdn.shopify.com/s/files/1/0086/0795/7054/files/logo_1.svg?v=1709198253" alt="Font Logo" className="hidden md:block w-32" />
           </div>
           <div className="hidden md:flex space-x-9">
           <Link to="/admin" className="text-sm font-semibold leading-6 text-gray-900">
@@ -75,18 +75,19 @@ export const AdminNavbar = () => {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
+                 <Link onClick={() => setMobileMenuOpen(false)} to="/admin" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                     Home
+                  </Link>
                   <Link onClick={() => setMobileMenuOpen(false)} to="/admin/productPage" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
                     Products
                   </Link>
                   <Link onClick={() => setMobileMenuOpen(false)} to="/admin/addproduct" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                    Add Products
+                    Orders
                   </Link>
                   <Link onClick={() => setMobileMenuOpen(false)} to="/admin/userslist" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
                     Users List
                   </Link>
-                  <Link onClick={() => setMobileMenuOpen(false)} to="/" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                    Go to Home
-                  </Link>
+                  
                   <Link
                     onClick={() => {
                       logout();

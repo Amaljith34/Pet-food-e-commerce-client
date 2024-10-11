@@ -31,6 +31,7 @@ export default function ProductDetail() {
     dispatch(addToCartAsync(productToAdd));
     toast.success("Product added Successfully");
   };
+console.log(product.product_name);
 
   return (
     <div className={`relative z-30 ${open ? "block" : "hidden"}`}>
@@ -59,14 +60,13 @@ export default function ProductDetail() {
               </div>
               <div className="sm:col-span-8 lg:col-span-7">
                 <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
-                  {product?.product_name}
+                  {product.product_name}
                 </h2>
                 <p className="text-xl text-gray-900 mt-14">Price: ₹{product?.price}</p>
+               
                 <p className="text-xl text-gray-900 mt-6">Category: ₹{product?.category}</p>
 
-                <form>
-                  
-
+                <form>            
                   <div className="mt-4">
                     
                     

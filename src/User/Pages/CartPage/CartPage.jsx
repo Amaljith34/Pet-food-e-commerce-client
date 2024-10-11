@@ -111,7 +111,9 @@ export default function CartPage() {
 
             <ul className="mt-8 divide-y divide-gray-200">
               {cart?.map((product) => (
+                
                 <li key={product._id} className="py-6 flex">
+                  
                   <img
                     className="h-32 w-32 rounded-md border"
                     src={product.productId.imageSrc}
@@ -123,7 +125,7 @@ export default function CartPage() {
                         {product.productId.product_name}
                       </Link>
                     </h3>
-                    <p className="text-sm text-gray-500">{product.productId.color}</p>
+                    <p className="text-sm text-gray-500">{product.productId.product_name}</p>
                     <p className="text-xs text-gray-500">
                       {product.productId.price} x {product.quantity}
                     </p>
@@ -144,7 +146,7 @@ export default function CartPage() {
                         </button>
                       </div>
                       <button
-                        className="text-indigo-600 hover:text-indigo-500"
+                        className="text-indigo-600  hover:text-indigo-500"
                         onClick={() => dispatch(removeFromCartAsync(product.productId._id))}
                       >
                         Remove

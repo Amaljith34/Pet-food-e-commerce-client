@@ -5,6 +5,7 @@ import productSlice from "../productSlice/productSlice";
 import loginSlice from "../logSlice/logSlice";
 import wishlistSlice from "../wishlistSlice/wishlistSlice";
 
+
 export const storee = configureStore({
   reducer: {
     cartSlice: cartSlice,
@@ -12,5 +13,6 @@ export const storee = configureStore({
     productSlice: productSlice,
     isLogged: loginSlice,
     wishlistSlice: wishlistSlice,
+    
   },
 });

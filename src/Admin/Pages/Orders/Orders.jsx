@@ -15,25 +15,7 @@ export default function UsersLists() {
   const dispatch = useDispatch();
   const userLogin = localStorage.getItem("id");
 
-  const handleDeleteUser = (users) => {
-    api
-      .delete(`/admin/deleteuser/${users._id}`)
-      .then(() => {
-        dispatch(deleteUser(users));
-        toast.success(`User '${users.username}' deleted successfully`);
-      })
-      .catch((err) => toast.error("Failed to delete user"));
-  };
-  console.log(filteredUsers);
-  const handleBlockUser = (user) => {
-    api
-      .post(`/admin/userblock/${user._id}`)  // PUT request to block user
-      .then(() => {
-        dispatch(blockUser(user));  // Dispatch action to update state if necessary
-        toast.success(`User '${user.UserName}' ${user.isBlockd?"Block":"unblock"} successfully`);
-      })
-      .catch((err) => toast.error("Failed to block user"));
-  };
+ 
   
   return (
     <>
@@ -42,11 +24,9 @@ export default function UsersLists() {
         <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm mt-10">
           <thead className="ltr:text-left rtl:text-right">
             <tr>
-              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Id
-              </th>
+              
               <th className="sticky left-0 bg-white whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Name
+                orderid
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                 Email
@@ -55,8 +35,15 @@ export default function UsersLists() {
                 Order
               </th>
               <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                Delete
+                ProductId
               </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                price
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Qantity
+              </th>
+              
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 text-center tracking-wider">
@@ -74,7 +61,7 @@ export default function UsersLists() {
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                   <button
                     onClick={() => {
-                      navigate(`/admin/userslist/user/:${user._id}/orders`);
+                      navigate(`/admin/userslist/user/orders/:${user._id}`);
                     }}
                     type="button"
                     className="px-2.5 py-1 rounded-md bg-lime-600 text-white font-semibold text-base  shadow hover:bg-lime-700 focus:outline-none  focus:ring-lime-700"
@@ -83,13 +70,7 @@ export default function UsersLists() {
                   </button>
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                  <button
-                    onClick={() => handleBlockUser(user)}
-                    type="button"
-                    className="px-4 py-1 bg-red-500 text-white font-semibold text-base rounded shadow hover:bg-red-600 focus:outline-none  focus:ring-red-600"
-                  >
-                    {user.isBlockd  ?"UnBlock":"Block"}
-                  </button>
+                  
                 </td>
               </tr>
             ))}

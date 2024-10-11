@@ -34,6 +34,7 @@ const productSlice = createSlice({
     categorize: (state, action) => {
       if (action.payload === "all") {
         state.filteredProducts.data = state.products.data;
+        
       } else {
         state.filteredProducts.data = state.products.data.filter(
           (product) => product.category === action.payload

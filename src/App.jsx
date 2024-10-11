@@ -80,7 +80,7 @@ function App() {
         <Routes>
           {/* Users Routes */}
 
-          <Route path="/" element={<UserProtect element={<Navbar />}/>}>
+          <Route path="/"  element={<Navbar />}>
             <Route index element={<HomePage />} />
             <Route
               path="products"

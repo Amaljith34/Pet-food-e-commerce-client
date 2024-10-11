@@ -29,6 +29,17 @@ const userSlice = createSlice({
       state.users.data = state.users.data.filter((user) => user.id !== userId);
       state.filteredUsers.data = state.filteredUsers.data.filter((user) => user.id !== userId);
     },
+    blockUser: (state, action) => {
+      const userId = action.payload.id;
+      state.users.data = state.users.data.map((user) => 
+        user.id === userId ? { ...user, isBlockd: !user.isBlockd } : user
+      );
+      state.filteredUsers.data = state.filteredUsers.data.map((user) => 
+        user.id === userId ? { ...user, isBlockd: !user.isBlockd } : user
+      );
+    },
+    
+    
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.pending, (state, action) => {
@@ -47,4 +58,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { searchFilterUser, deleteUser } = userSlice.actions;
+export const { searchFilterUser, deleteUser ,blockUser} = userSlice.actions;

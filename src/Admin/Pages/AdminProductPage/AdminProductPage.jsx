@@ -21,7 +21,7 @@ export const AdminProductPage = () => {
   const handleProductRemove = (product) => {
     api.delete(`/admin/product//${product._id}`).then(() => {
       dispatch(deleteProduct(product));
-      toast.success(`Product '${product.title}' Removed`);
+      toast.success(`Product '${product.product_name}' Removed`);
     });
   };
   const navigate = useNavigate();
@@ -57,15 +57,27 @@ export const AdminProductPage = () => {
               </option>
               <option
                 className="text-sm font-semibold leading-6 text-gray-900 text-center"
-                value="men"
+                value="dog"
               >
-                Men
+                Dog
               </option>
               <option
                 className="text-sm font-semibold leading-6 text-gray-900 text-center"
-                value="women"
+                value="cat"
               >
-                Women
+                Cat
+              </option>
+              <option
+                className="text-sm font-semibold leading-6 text-gray-900 text-center"
+                value="fish"
+              >
+                Fish
+              </option>
+              <option
+                className="text-sm font-semibold leading-6 text-gray-900 text-center"
+                value="bird"
+              >
+                Bird
               </option>
             </select>
           </div>
