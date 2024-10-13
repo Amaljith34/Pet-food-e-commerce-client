@@ -19,7 +19,7 @@ export const AdminProductPage = () => {
   };
 
   const handleProductRemove = (product) => {
-    api.delete(`/admin/product//${product._id}`).then(() => {
+    api.delete(`/admin/product/${product._id}`).then(() => {
       dispatch(deleteProduct(product));
       toast.success(`Product '${product.product_name}' Removed`);
     });
@@ -99,15 +99,15 @@ export const AdminProductPage = () => {
                   </div>
                   <div className="mt-2 ">
                     <div>
-                      <h3 className="text-sm text-gray-700 flex justify-between">
-                        {product.title}
+                      <h3 className="text-sm text-gray-700 flex justify-between font-bold">
+                        {product.product_name}
                         <span className="text-md font-medium text-gray-900">
-                          ₹{product.price}
+                         price: ₹{product.price}
                         </span>
                       </h3>
 
                       <p className="mt-1 text-sm text-gray-500">
-                        {product.color}{" "}
+                      category:{product.category}{" "}
                       </p>
                     </div>
 

@@ -154,7 +154,7 @@ export default function CartPage() {
                       </div>
                       <button
                         className="text-indigo-600  hover:text-indigo-500"
-                        onClick={() => dispatch(removeFromCartAsync(product.productId._id), toast.success("helo")) }
+                        onClick={() => dispatch(removeFromCartAsync(product.productId._id), toast.success("remove sucessfully")) }
                       >
                         Remove
                       </button>
