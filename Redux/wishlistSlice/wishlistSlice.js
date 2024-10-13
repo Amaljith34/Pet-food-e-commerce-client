@@ -8,7 +8,7 @@ export const settingWishList = createAsyncThunk(
     try {
       const id = localStorage.getItem("id");
       const response = await api.get(`/user/wishlist/${id}`);
-      console.log(response);
+      // console.log(response);
       
       return response.data.data;
     } catch (error) {
@@ -27,7 +27,7 @@ export const addToWishListAsync = createAsyncThunk(
       return product;
     } catch (error) {
       if (error.response?.status === 400) {
-        toast.error("Product already in wishlist");
+        // toast.error("Product already in wishlist");
       } else {
         toast.error("Failed to add to wishlist");
       }

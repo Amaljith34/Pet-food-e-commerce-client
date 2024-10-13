@@ -1,5 +1,3 @@
-
-
 import { Fragment, useContext, useEffect, useState } from "react";
 import logo from "../../../Assets/Logo.png";
 import fontLogo from "../../../Assets/font.png";
@@ -17,13 +15,9 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Outlet } from "react-router-dom";
 import profileIcon from "../../../Assets/user-icon.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as yup from "yup";
-// import axios from "axios";
 import { categorize } from "../../../../Redux/productSlice/productSlice";
 import { toast } from "react-toastify";
-// import { CartContext } from "../../Componet/Contexts/Contexts";
 import { useSelector, useDispatch } from "react-redux";
-
 import { logout } from "../../../../Redux/logSlice/logSlice";
 import api from "../../../../utils/axios";
 
@@ -33,7 +27,6 @@ function classNames(...classes) {
 
 export default function Navbar() {
   // const {// logout,// isLoggedIn,// setCategory,// categorize,// category,// filterUsers,} = useContext(CartContext);
-  // const { category } = useSelector((state) => state.productSlice);
   const { filteredUsers } = useSelector((state) => state.usersSlice);
   const { cart } = useSelector((state) => state.cartSlice);
   const { wishlist } = useSelector((state) => state.wishlistSlice);
@@ -45,6 +38,7 @@ export default function Navbar() {
   const [showOrders, setShowOrders] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [showWishList, setShowWishList] = useState(false);
+  const [users,setusers]=useState()
   const user = filteredUsers?.data?.find((user) => user._id === userLogin);
 
 
@@ -66,6 +60,13 @@ export default function Navbar() {
   const handleShowOrders = () => {
     setShowOrders(true);
   };
+  useEffect(()=>{
+    api.get(`admin/userlist/${userLogin}`)
+    .then((res)=>setusers(res.data.data.UserName)
+    
+    )
+    .catch((error) => console.error(error.message));
+  })
 
   const handleShowProfile = () => {
     setShowProfile(true);
@@ -81,7 +82,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
  
-  // console.log(user);
+  
 
  
 
@@ -227,6 +228,7 @@ const handleRefundRequest = async (orderId) => {
               to="/cart"
               className="text-sm font-semibold leading-6 w-6 sm:w-14 lg:ms-20 text-gray-900"
             >
+              
               {cart?.length > 0 && (
                 <span className="absolute  bg-red-600 text-white text-xs font-semibold rounded-full w-3 h-3 items-center justify-center ml-4 "></span>
               )}
@@ -250,16 +252,17 @@ const handleRefundRequest = async (orderId) => {
                   </MenuButton>
                 </div>
                 <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
-                  <MenuItem>
+                  
+                <MenuItem>
                     {({ focus }) => (
                       <a
-                        onClick={handleShowProfile}
+                        
                         className={classNames(
                           focus ? "bg-gray-100" : "",
                           "block px-4 py-2 text-sm text-gray-700"
                         )}
                       >
-                        Update Info
+                       {users}
                       </a>
                     )}
                   </MenuItem>
@@ -276,6 +279,7 @@ const handleRefundRequest = async (orderId) => {
                       </a>
                     )}
                   </MenuItem>
+                  
                   <MenuItem>
                     {({ focus }) => (
                       <Link
@@ -508,6 +512,8 @@ const handleRefundRequest = async (orderId) => {
                         className="odd:bg-white even:bg-gray-50"
                       >
                         <td className="px-4 py-4">
+                          {console.log(wish)
+                          }
                           <img
                             src={wish.productId.imageSrc}
                             alt={wish.productId.product_name}
@@ -552,12 +558,12 @@ const handleRefundRequest = async (orderId) => {
             <div className="text-teal-600">
               <img
                 className="mx-auto h-16 w-auto"
-                src={logo}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwEW_CFG2UFcgbOqweXnTGqCgkximYg6Be-Q&s"
                 alt="Company Logo"
               />
             </div>
             <span className="text-xs text-gray-500">
-              &copy; 2021 Kazpix.in All rights reserved.
+              &copy; 2023 Petpal.in All rights reserved.
             </span>
             <ul className="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">
               <li>

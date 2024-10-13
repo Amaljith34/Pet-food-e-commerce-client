@@ -28,7 +28,7 @@ const productSlice = createSlice({
   reducers: {
     searchFilter: (state, action) => {
       state.filteredProducts.data = state.products.data.filter((product) =>
-        product.title.toLowerCase().includes(action.payload.toLowerCase())
+        product.product_name.toLowerCase().includes(action.payload.toLowerCase())
       );
     },
     categorize: (state, action) => {

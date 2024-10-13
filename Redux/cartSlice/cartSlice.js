@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 // import axios from "axios";
 import api from "../../utils/axios";
+import { toast } from "react-toastify";
 
 const INITIAL_STATE = {
   cart: [],
@@ -75,20 +76,19 @@ export const removeFromCartAsync = createAsyncThunk(
       const deleteProduct = await api.delete(`/user/cart/${id}`, {
         data: { productId: productId },
       });
-      const currentProducts = deleteProduct?.data?.data?.products;
-
-      if (currentProducts.length > 0) {
+      if(deleteProduct){
+        
         const res = await api.get(`/user/cart/${id}`);
-        if (res?.data?.data?.products) {
-          return res.data.data.products;
-        } else {
-          throw new Error("Cart not found or empty");
-        }
-      } else {
-        return [];
+        return res.data.data.products;
+          
       }
+        
+        
+        
+        
+      
     } catch (error) {
-      console.log("something went wrong!");
+      toast.error("something went wrong!");
       throw error;
     }
   }
@@ -100,18 +100,11 @@ export const quantityIncrementAsync = createAsyncThunk(
     try {
       // const state = getState();
       const id = localStorage.getItem("id");
-      // const userCart = Array.isArray(state.cartSlice.cart)
-      //   ? state.cartSlice.cart.map((item) => {
-      //       if (item._id === product._id) {
-      //         return { ...item, quantity: item.quantity + 1 };
-      //       }
-      //       return item;
-      //     })
-      //   : [];
+    
 
       await api.post(`user/cart/${id}`, {
         productId: product.productId._id,
-        quantity: product.quantity,
+      
         action: "increment",
       });
       const res = await api.get(`/user/cart/${id}`);
@@ -127,21 +120,12 @@ export const quantityDecrementAsync = createAsyncThunk(
   "cartSlice/quantityDecrementAsync",
   async (product, { getState }) => {
     try {
-      // const state = getState();
+   
       const id = localStorage.getItem("id");
-      // const userCart = Array.isArray(state.cartSlice.cart);
-      // ? state.cartSlice.cart.map((item) => {
-      //     if (item._id === product._id && item.quantity > 1) {
-      //       return { ...item, quantity: item.quantity - 1 };
-      //     }
-      //     return item;
-      //   })
-      // : [];
+     
 
       await api.post(`/user/cart/${id}`, {
         productId: product.productId._id,
-        quantity: product.quantity,
-        
         action: "decrement",
       });
       const res = await api.get(`/user/cart/${id}`);

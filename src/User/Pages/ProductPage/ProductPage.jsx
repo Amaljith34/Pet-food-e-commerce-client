@@ -56,28 +56,30 @@ const ProductPage = () => {
       const product = filteredProducts?.data?.find(
         (item) => item._id === productId
       );
+      // console.log(product);
+      
       if (product) {
         dispatch(addToWishListAsync(product));
         toast.success("Product added to wishlist");
       }
     }
   };
-
+  
+     
   return (
     <>
       <SearchBar />
       <div>
         <div className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-20 lg:max-w-7xl lg:px-8">
-            {/* <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-              Special for you
-            </h2> */}
+            
             <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
               {filteredProducts?.data?.map((product) => {
-                const isWishlisted = isWishlistedMap[product._id] || false;
+                const isWishlisted = isWishlistedMap[product._id] || false ;
+
 
                 return (
-                  <div key={product._id} className="group relative border-2 border-gray-400 p-3">
+                  <div key={product._id} className="group relative border-2 border-gray-400 p-3 rounded-3xl">
 
                     <button
                       onClick={() => handleWishlist(product._id)}

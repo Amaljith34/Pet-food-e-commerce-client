@@ -21,14 +21,14 @@ export const AdminNavbar = () => {
             <img src="https://cdn.shopify.com/s/files/1/0086/0795/7054/files/logo_1.svg?v=1709198253" alt="Font Logo" className="hidden md:block w-32" />
           </div>
           <div className="hidden md:flex space-x-9">
-          <Link to="/admin" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link to="/admin " className="text-sm font-semibold leading-6 active:to-blue-500 text-gray-900 active:text-blue-600">
               Dashbord
             </Link>
             <Link to="/admin/productPage" className="text-sm font-semibold leading-6 text-gray-900">
               Products
             </Link>
-            <Link to="/admin/addproduct" className="text-sm font-semibold leading-6 text-gray-900">
-              Add Products
+            <Link to="/admin/allorders" className="text-sm font-semibold leading-6 text-gray-900">
+              Orders
             </Link>
             <Link to="/admin/userslist" className="text-sm font-semibold leading-6 text-gray-900">
               Users List
@@ -62,7 +62,7 @@ export const AdminNavbar = () => {
           <div className="fixed inset-0 z-10" />
           <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
-              <img className="h-12 w-auto" src={fontLogo} alt="Company Logo" />
+              <img className="h-12 w-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwEW_CFG2UFcgbOqweXnTGqCgkximYg6Be-Q&s" alt="Company Logo" />
               <button
                 type="button"
                 className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -76,12 +76,12 @@ export const AdminNavbar = () => {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                  <Link onClick={() => setMobileMenuOpen(false)} to="/admin" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
-                     Home
+                     Dashbord
                   </Link>
                   <Link onClick={() => setMobileMenuOpen(false)} to="/admin/productPage" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
                     Products
                   </Link>
-                  <Link onClick={() => setMobileMenuOpen(false)} to="/admin/addproduct" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
+                  <Link onClick={() => setMobileMenuOpen(false)} to="/admin/allorders" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">
                     Orders
                   </Link>
                   <Link onClick={() => setMobileMenuOpen(false)} to="/admin/userslist" className="block rounded-lg px-3 py-2 text-base font-semibold text-gray-900 hover:bg-gray-50">

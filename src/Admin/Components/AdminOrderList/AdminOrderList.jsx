@@ -16,8 +16,10 @@ export default function AdminOrderList() {
 
   useEffect(() => {
     api
-      .get(`/user/orders`)
+      .get(`/user/orders/${id}`)
       .then((res) => {
+        console.log(res);
+        
         setUserOrders([res.data.data]);
       })
       .catch((error) => console.error(error.message));
@@ -49,12 +51,17 @@ export default function AdminOrderList() {
           {userOrders.length > 0 ? (
             <div className="space-y-4">
               {userOrders.map((orders, index) => (
+                
                 <div
+
                   key={index}
                   className="bg-white p-4 rounded-md shadow-md border border-gray-200"
                 >
+                  {console.log(orders)}
                   {orders.map((order, index) => (
                     <Fragment key={order._id}>
+                     { console.log(order)}
+                      
                       <div className="mb-4">
                         <h2 className="text-lg font-bold text-gray-900">
                           Order #{index + 1}
@@ -63,7 +70,7 @@ export default function AdminOrderList() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
                         <div>
-                          <h2 className="text-base font-bold text-gray-900">
+                          {/* <h2 className="text-base font-bold text-gray-900">
                             Customer Info
                           </h2>
                           <p className="text-sm text-gray-700">
@@ -77,7 +84,7 @@ export default function AdminOrderList() {
                           <p className="text-sm text-gray-700">
                             <span className="font-semibold">Pincode: </span>
                             {order.pincode}
-                          </p>
+                          </p> */}
                         </div>
                         {/* <div className="flex justify-end items-center">
                           <span className="px-3 py-1 bg-green-500 text-white text-xs font-medium rounded-full">
@@ -97,11 +104,11 @@ export default function AdminOrderList() {
                           >
                             <img
                               src={product.productId.imageSrc}
-                              alt={product.productId.title}
-                              className="w-full h-24 object-cover rounded-md mb-2"
+                              alt={product.productId.product_name}
+                              className=" object-cover rounded-md mb-2"
                             />
                             <p className="text-sm font-semibold text-gray-800">
-                              {product.productId.title}
+                              {product.productId.product_name}
                             </p>
                             <p className="text-xs text-gray-600">
                               Category: {product.productId.category}

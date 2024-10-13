@@ -47,14 +47,14 @@ const ContactPage = () => {
           <h3 className="text-2xl font-semibold">Head Office</h3>
           <p className="text-gray-700 mt-1">Shop No. 34</p>
           <p className="text-gray-700">S.M Street, Calicut</p>
-          <p className="text-gray-700">Email: contact@headsupfortails.com</p>
+          <p className="text-gray-700">Email: contact@Petpal.in</p>
           <p className="text-gray-700">Phone: (+91) 8590166397</p>
         </div>
         <div>
           <h3 className="text-2xl font-semibold">Branch Office 1</h3>
           <p className="text-gray-700 mt-1">U-Square chelari</p>
           <p className="text-gray-700">Calicut Road, chelari</p>
-          <p className="text-gray-700">Email: contact@headsupfortails.com</p>
+          <p className="text-gray-700">Email: contact@Petpal.in</p>
           <p className="text-gray-700">Phone: (+91) 9876543210</p>
         </div>
         <Formik

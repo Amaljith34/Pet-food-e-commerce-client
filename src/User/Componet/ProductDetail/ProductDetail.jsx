@@ -15,6 +15,7 @@ export default function ProductDetail() {
 
   const product = products?.data?.find((item) => item._id === idNum);
 
+
   const [open, setOpen] = useState(true);
   
   const [newQuantity, setNewQuantity] = useState(product?.quantity || 1);

@@ -31,7 +31,8 @@ import { Toaster } from "react-hot-toast";
 import { settingWishList } from "../Redux/wishlistSlice/wishlistSlice";
 import Navbar from './User/Pages/Navbar/Navbar';
 import { AdminNavbar } from './Admin/Pages/Adminnavbar/Adminnavbar';
-import UserProtect from './User/Componet/userProtect/userProduct';
+// import UserProtect from './User/Componet/userProtect/userProduct';
+import Orders from './Admin/Pages/Orders/Orders';
 
 function App() {
   const id = localStorage.getItem("id");
@@ -168,9 +169,24 @@ function App() {
                 />
               }
             />
-            
             <Route
-              path="/admin/userslist/user/:id/orders"
+              path="/admin/orders"
+              element={
+                <AdminProtect
+                  element={<ProtectedRoute element={<AdminOrderList />} />}
+                />
+              }
+            />
+            <Route
+              path="/admin/allorders"
+              element={
+                <AdminProtect
+                  element={<ProtectedRoute element={< Orders />} />}
+                />
+              }
+            />
+            <Route
+              path="/admin/userslist/user/orders/:id"
               element={
                 <AdminProtect
                   element={<ProtectedRoute element={<AdminOrderList />} />}

@@ -30,7 +30,7 @@ export default function AdminHomePage() {
   }, []);
 
   return (
-    <div className="md:ms-44 grid grid-cols-1 md:grid-cols-2  gap-6 mb-6 px-4 md:px-6 lg:px-8 lg:align-middle lg:mt-28 ">
+    <div className=" grid grid-cols-1 md:grid-cols-2  gap-6 mb-6 px-4 md:px-6 lg:px-8 lg:align-middle lg:mt-28 ">
       <Link
         to="/admin/usersList"
         className="block bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg p-6 shadow-lg transform transition hover:scale-105 duration-300"
@@ -60,7 +60,7 @@ export default function AdminHomePage() {
       </Link>
 
       <Link
-        to="/admin/usersList"
+        to="/admin/allorders"
         className="block bg-gradient-to-r from-yellow-400 to-orange-400 text-white rounded-lg p-6 shadow-lg transform transition hover:scale-105 duration-300"
       >
         <div className="flex justify-between items-center mb-4">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -8,6 +8,7 @@ import {
   quantityDecrementAsync,
   quantityIncrementAsync,
   removeFromCartAsync,
+  settingCart,
 } from "../../../../Redux/cartSlice/cartSlice";
 import api from "../../../../utils/axios";
 
@@ -21,6 +22,11 @@ export default function CartPage() {
   const { filteredUsers } = useSelector((state) => state.usersSlice);
   const user = filteredUsers?.data?.find((user) => user._id === id);
 
+  useEffect(() => {
+    if (id) {
+      dispatch(settingCart());
+    }
+  }, [dispatch, id]);
   const Subtotal = cart?.reduce((total, product) => {
     return total + product.productId.price * product.quantity;
   }, 0);
@@ -113,6 +119,7 @@ export default function CartPage() {
               {cart?.map((product) => (
                 
                 <li key={product._id} className="py-6 flex">
+                  {console.log(product)}
                   
                   <img
                     className="h-32 w-32 rounded-md border"
@@ -147,7 +154,7 @@ export default function CartPage() {
                       </div>
                       <button
                         className="text-indigo-600  hover:text-indigo-500"
-                        onClick={() => dispatch(removeFromCartAsync(product.productId._id))}
+                        onClick={() => dispatch(removeFromCartAsync(product.productId._id), toast.success("helo")) }
                       >
                         Remove
                       </button>

@@ -44,7 +44,7 @@ export default function SearchBar({ flag }) {
             value={searchValue}
             onKeyDown={handleKeyDown}
             onChange={searchChange}
-            className="w-full rounded-md border-gray-200 py-1.5 pe-10 shadow sm:text-sm ps-2 sm:me-5 me-0  border"
+            className="w-full rounded-md  py-1.5 pe-10 shadow sm:text-sm ps-2 sm:me-5 me-0  border border-black"
           />
 
           <span className="absolute inset-y-0 end-0 grid w-10 place-content-center">
