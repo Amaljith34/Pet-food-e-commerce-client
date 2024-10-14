@@ -230,7 +230,7 @@ const handleRefundRequest = async (orderId) => {
             >
               
               {cart?.length > 0 && (
-                <span className="absolute  bg-red-600 text-white text-xs font-semibold rounded-full w-3 h-3 items-center justify-center ml-4 "></span>
+                <span className="absolute  bg-red-600 text-white text-xs font-semibold rounded-full w-4 h-4 items-center justify-center ml-4 text-center  ">{cart.length}</span>
               )}
               <img
                 className="h-6 w-auto "

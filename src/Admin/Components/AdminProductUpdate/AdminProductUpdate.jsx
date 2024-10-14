@@ -31,7 +31,7 @@ export default function AdminProductUpdate() {
       const updated = Object.keys(values).some((key) => values[key] !== product[key]);
 
       if (updated) {
-        await api.patch(`/admin/product/${product._id}`, values);
+        await api.put(`/admin/product/${product._id}`, values);
         dispatch(updateProduct(values));
         dispatch(fetchProducts());
         toast.success(`Updated product successfully`);
