@@ -90,7 +90,7 @@ export default function CartPage() {
       if (error.response.status === 404) {
         toast.error("Cart is empty ");
       } else {
-        console.error("Payment Creation Failed:", error);
+        console.error("Payment Creation Failed ", error);
         toast.error("Payment Creation Failed. Please try again.");
       }
     }
