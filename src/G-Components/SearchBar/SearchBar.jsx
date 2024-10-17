@@ -53,7 +53,7 @@ export default function SearchBar({ flag }) {
               type="button"
               className="text-gray-600 hover:text-gray-700"
             >
-              <span className="sr-only">Search</span>
+              <span className="sr-only">Search..</span>
 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
