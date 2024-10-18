@@ -31,7 +31,7 @@ export default function Orders() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 text-center tracking-wider">
-            {loading && <tr><td colSpan="5">Loading...</td></tr>}
+            {loading && <tr><td colSpan="5">Loading..</td></tr>}
             {error && <tr><td colSpan="5">{error}</td></tr>}
             {orders?.map((order) => (
               <tr key={order.order_Id}>{console.log(order)}
