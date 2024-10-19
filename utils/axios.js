@@ -3,12 +3,12 @@ import axios from "axios";
 // const baseUrl = import.meta.env.VITE_USER_API;
 // console.log(baseUrl);
 
-const baseUrl = "http://localhost:3000/api"
+const baseUrl = "https://pet-food-ecommerce-server.onrender.com/api"
 // console.log(baseUrl)
 
 const api = axios.create({
   baseURL: baseUrl,
-});
+});    
 
 api.interceptors.request.use(
   (request) => {
