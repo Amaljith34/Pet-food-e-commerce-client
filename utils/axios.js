@@ -8,7 +8,7 @@ const baseUrl = "https://pet-food-ecommerce-server.onrender.com/api"
 
 const api = axios.create({
   baseURL: baseUrl,
-});
+});    
 
 api.interceptors.request.use(
   (request) => {
