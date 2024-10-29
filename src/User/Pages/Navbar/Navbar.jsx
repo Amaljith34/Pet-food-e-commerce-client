@@ -120,6 +120,11 @@ const handleRefundRequest = async (orderId) => {
                 <span className="sr-only"> Company Logo</span>
                 <img
                   className="sm:h-8 md:h-12 h-4  w-auto"
+                  src="https://thumbs.dreamstime.com/z/pet-food-shop-logo-template-design-brown-badge-company-identity-label-pet-shop-quality-service-food-vector-116612688.jpg"
+                  alt="Logo"
+                />
+                <img
+                  className="sm:h-8 md:h-12 h-4  w-auto"
                   src="https://cdn.shopify.com/s/files/1/0086/0795/7054/files/logo_1.svg?v=1709198253"
                   alt="Logo"
                 />
