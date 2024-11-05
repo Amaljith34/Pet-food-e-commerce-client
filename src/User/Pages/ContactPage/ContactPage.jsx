@@ -21,7 +21,7 @@ const ContactPage = () => {
 
   const handleSubmit = (values, { resetForm, setErrors }) => {
     const Service_ID = "service_335bzg6";
-    const Template_ID = "template_20rnsgt";
+    const Template_ID = "template_za21gyz";
     const Public_Key = "rtz1GMFWKAXfUDcLQ";
 
     const templateParams = {
