@@ -20,9 +20,9 @@ const ContactPage = () => {
   });
 
   const handleSubmit = (values, { resetForm, setErrors }) => {
-    const Service_ID = "service_189r1bh";
-    const Template_ID = "template_6h39z59";
-    const Public_Key = "KbEoyyGB8xIbYh60w";
+    const Service_ID = "service_335bzg6";
+    const Template_ID = "template_20rnsgt";
+    const Public_Key = "rtz1GMFWKAXfUDcLQ";
 
     const templateParams = {
       name: values.name,
